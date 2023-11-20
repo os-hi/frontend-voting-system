@@ -21,6 +21,7 @@ export default {
       'blue': '#4299E1',
       'orange': '#F56565',
       'transparent': 'transparent',
+      'bg': '#F6F8FB',
 
     },
   },
