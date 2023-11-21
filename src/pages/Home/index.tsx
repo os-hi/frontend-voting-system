@@ -2,13 +2,14 @@ import useFetch from "../../hooks/useFetch";
 import { Card, CardHeader, CardBody, Heading, Box, Grid, GridItem, Text, CardFooter, Button } from '@chakra-ui/react'
 import {Link} from 'react-router-dom'
 import Banner from "./components/Banner";
+import Spinners from "../../components/Spinners";
 const Home = () => {
     const url = 'http://localhost:8000/api/events/1'
 
     const {data: event, isLoading, error} = useFetch(url)
 
     if (error) return <p>{error}</p>
-    if (isLoading) return  <p>Loading...</p>
+    if (isLoading) return  <Spinners />
     return ( 
         <div className="w-full h-full flex justify-center items-center gap-6">
             <Banner />
