@@ -7,8 +7,7 @@ const axiosInstance = axios.create({
   baseURL: API_DOMAIN,
 });
 
-axiosInstance.interceptors.request.use(
-  (axiosRequestConfig: AxiosRequestConfig) => {  
+axiosInstance.interceptors.request.use((axiosRequestConfig: AxiosRequestConfig) => {  
     const token = getLocalStorageItem('token');
 
     if (token) {

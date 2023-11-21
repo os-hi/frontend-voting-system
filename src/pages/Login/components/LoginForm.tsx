@@ -32,7 +32,7 @@ function LoginForm() {
       email: Yup.string().email('Invalid Email').required('Email is required'),
       password: Yup.string().required('Password is required'),
     }),
-    onSubmit: async (values) => {
+    onSubmit: async (values: any) => {
       try {
         // Simulate a login request to the backend
         const response = await axios.post(authAPI.LOGIN, values,
@@ -73,14 +73,14 @@ function LoginForm() {
             onBlur={formik.handleBlur}
             value={formik.values.email}
             placeholder='Enter your email'
-            className='border rounded-full p-3'
+            className='border border-dark rounded-full p-3 active:border-secondary focus:border-none focus:outline-none focus:ring focus:ring-secondary'
           />
           {formik.touched.email && formik.errors.email && (
-            <div className='text-orange'>{formik.errors.email}</div>
+            <div className='text-orange'>{formik.errors.email.toString()}</div>
           )}
         </div>
         <div className='flex flex-col w-full'>
-          <label htmlFor="password" className='mb-2'>Password</label>
+          <label htmlFor="password" className='mb-2 font-semibold'>Password</label>
           <input
             type="password"
             id="password"
@@ -89,10 +89,10 @@ function LoginForm() {
             onBlur={formik.handleBlur}
             value={formik.values.password}
             placeholder='Enter your password'
-            className='border rounded-full p-3'
+            className='border border-dark rounded-full p-3 active:border-secondary focus:border-none focus:outline-none focus:ring focus:ring-secondary'
           />
           {formik.touched.password && formik.errors.password && (
-            <div className='text-orange'>{formik.errors.password}</div>
+            <div className='text-orange'>{formik.errors.password.toString()}</div>
           )}
         </div>
         <button className='w-full bg-secondary text-white rounded-full p-3 hover:bg-accent' type="submit">Login</button>
