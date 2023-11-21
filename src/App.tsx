@@ -11,6 +11,9 @@ import Faq from './pages/Faq/index.tsx';
 import Login from './pages/Login/index.tsx';
 import Dashboard from './pages/Dashboard/index.tsx';
 import MyEvents from './pages/Dashboard/MyEvents/index.tsx';
+import { Suspense } from 'react';
+import Spinners from './components/Spinners.tsx';
+import { LoginAction } from './action/LoginAction.ts';
 
 //loader
 // import { EventLoader } from './loader/EventLoader.ts';
@@ -39,7 +42,7 @@ export default function App() {
         {
           index: true,
           // loader: EventLoader,
-          element: <Home />
+          element: <Suspense fallback={<Spinners />}><Home/></Suspense>
         },
         {
           path: "faq",
@@ -47,7 +50,8 @@ export default function App() {
         },
         {
           path: "login",
-          element: <Login />
+          element: <Login />,
+          action: LoginAction
         }
       ]
     },
